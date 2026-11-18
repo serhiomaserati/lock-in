@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.lockin.mobile",
+      "sha256_cert_fingerprints": [
+        "E3:7B:D8:EE:75:AD:E7:C4:E5:DC:44:B0:54:7F:05:C1:80:A7:67:A8:49:46:3C:85:6A:15:64:53:75:6D:C6:39"
+      ]
+    }
+  }
+]

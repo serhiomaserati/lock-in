@@ -1,0 +1,41 @@
+# ---- Secrets: never commit ----
+# Solana keypairs (devnet deployer/admin, program addresses, keeper, test treasury)
+program/keys/
+**/*keypair*.json
+**/*-devnet.json
+**/id.json
+# Env files and signing material
+.env
+.env.*
+*.pem
+*.key
+*.jks
+*.p8
+*.p12
+*.keystore
+*.mobileprovision
+credentials.json
+
+# ---- Build artifacts ----
+node_modules/
+program/target/
+program/.anchor/
+seeker-app/.expo/
+seeker-app/dist/
+seeker-app/web-build/
+seeker-app/android/
+seeker-app/ios/
+seeker-app/expo-env.d.ts
+*.apk
+*.aab
+*.tsbuildinfo
+.metro-health-check*
+
+# ---- Local only ----
+seeker-app/scripts/localnet-config.json
+seeker-app/scripts/localnet-mainnet-config.json
+
+
+npm-debug.*
+.DS_Store
+

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy · Lock-In</title>
+  <meta name="description" content="What stays on your phone, what is public on Solana and what outside services receive when you use Lock-In.">
+  <meta name="theme-color" content="#111310">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="canonical" href="https://lockinhq.app/privacy.html">
+  <meta property="og:url" content="https://lockinhq.app/privacy.html">
+  <meta property="og:image" content="https://lockinhq.app/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lock-In: Keep your word. The Android app showing a step goal.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="Lock-In home">LOCK-IN<svg viewBox="270 230 484 600" aria-hidden="true"><path d="M396 470 V398 A116 116 0 0 1 628 398 V470" fill="none" stroke="#D4F66A" stroke-width="76"/><rect x="292" y="452" width="440" height="356" rx="76" fill="#D4F66A"/><circle cx="512" cy="606" r="46" fill="#111310"/><rect x="490" y="620" width="44" height="100" rx="22" fill="#111310"/></svg></a>
+      <nav class="nav" aria-label="Main">
+        <a href="how-it-works.html">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <details class="menu">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</summary>
+        <nav class="menu-panel" aria-label="Main, compact">
+          <a href="how-it-works.html">How it works</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap narrow">
+      <div class="page-head">
+        <span class="eyebrow">Privacy</span>
+        <h1>Privacy policy</h1>
+        <p class="lead">What stays on your phone, what is public on Solana, and what outside services receive.</p>
+        <p class="updated">Last updated October 18, 2026</p>
+      </div>
+
+      <div class="prose">
+        <div class="notice">
+          <p>This policy covers the Lock-In app for Android and this website.
+            Lock-In is operated by <span data-config="operatorName">Lock-In (@LockInDapp on X)</span>, an independent developer based in Ukraine.</p>
+        </div>
+
+        <h2 id="summary">In short</h2>
+        <div class="split">
+          <div>
+            <h3>On your phone</h3>
+            <ul>
+              <li>Goal names</li>
+              <li>Exact step counts</li>
+              <li>The phone's check-in key</li>
+              <li>Settings and reminders</li>
+              <li>Copies of your public goal data</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Public on Solana</h3>
+            <ul>
+              <li>Wallet address and deposit</li>
+              <li>The goal's rules</li>
+              <li>Completed days and the outcome</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Outside services</h3>
+            <ul>
+              <li>Solana RPC endpoint</li>
+              <li>Your wallet app</li>
+              <li>Apps you share a card with</li>
+            </ul>
+          </div>
+        </div>
+        <p>Lock-In has no accounts and no server of its own. The app contains no analytics, advertising or crash-reporting tools, and we don't sell your data.</p>
+
+        <h2 id="phone">What is stored on your phone</h2>
+        <h3>Only on your phone</h3>
+        <ul>
+          <li>Goal names.</li>
+          <li>For step goals: your daily step totals, and which apps recorded the steps, so you can see where a count came from.</li>
+          <li>The exact times you checked in.</li>
+          <li>The check-in key the app creates on your phone to record your days on Solana. It is kept in Android's secure storage and never leaves the phone.</li>
+          <li>The connection your wallet app grants to Lock-In, your reminder settings and other app settings.</li>
+        </ul>
+        <h3>Local copies of public goal data</h3>
+        <ul>
+          <li>Each goal's type, schedule, deposit amount and time zone, which days were recorded and the outcome, and your wallet's public address. These are also public on Solana (see below); the app keeps a copy to show your goals.</li>
+        </ul>
+        <p>Lock-In never receives your wallet's private key or recovery phrase: your wallet app signs, and Lock-In only gets the signed result.</p>
+        <p>None of this is sent to us. A goal name leaves your phone only if you choose to include it in a share card (see <a href="#share">Sharing</a>).</p>
+
+        <h2 id="health-connect">Health Connect</h2>
+        <p>If you create a step goal, Lock-In asks for permission to read <strong>Steps</strong> from Health Connect, the health data store on your Android phone. It reads step records only for the days of your active goals, adds them up per day and ignores steps entered by hand. It doesn't read any other health data and never writes to Health Connect.</p>
+        <p>Step data is used only to decide whether you reached your daily target. It isn't used for advertising, isn't shared and isn't sent to a server. On Solana only the fact that a day was completed is recorded, never your step count.</p>
+        <p>You can revoke access at any time in Health Connect, or in the app under Settings → Step tracking. Without access, days of a step goal can't be verified.</p>
+
+        <h2 id="solana">What is public on Solana</h2>
+        <p>Creating a goal, recording days and paying out a deposit are Solana transactions. Anyone can read them, and they can't be deleted.</p>
+        <div class="table-scroll">
+          <table>
+            <tr><th>Public on Solana</th><th>Not on Solana</th></tr>
+            <tr>
+              <td data-label="Public on Solana">Your wallet address · the deposit amount and token · the goal type (steps or self check-in) · the daily step target · the number of days · start, end and day boundaries · the time zone name (for example <em>Europe/Kyiv</em>) · which days were recorded · the outcome and the payout</td>
+              <td data-label="Not on Solana">The goal's name · your step counts · anything else from Health Connect</td>
+            </tr>
+          </table>
+        </div>
+
+        <h2 id="services">Outside services</h2>
+        <ul>
+          <li><strong>Solana RPC endpoint.</strong> The app reads and sends transactions through a Solana network endpoint (the public Solana mainnet endpoint). Like any web service it receives your IP address and the public addresses the app asks about.</li>
+          <li><strong>Your wallet app</strong>, for example Phantom, Solflare or Seed Vault Wallet, approves your deposits and has its own privacy policy.</li>
+          <li><strong>The app store</strong> you install Lock-In from has its own privacy policy.</li>
+          <li><strong>This website</strong> loads no third-party fonts, cookies or trackers. Its hosting provider (<span data-config="hostingProvider">GitHub Pages</span>) may keep standard server logs.</li>
+        </ul>
+
+        <h2 id="share">Sharing</h2>
+        <p>The app can create an image of your goal's progress for you to share. Nothing is shared unless you tap Share and pick an app. The deposit amount is left out by default, and you choose whether to include the goal's name. Once shared, the image is handled by the app you send it to.</p>
+
+        <h2 id="delete">Deleting your data</h2>
+        <p>Delete everything Lock-In keeps on your phone in Settings → Delete local data, or by uninstalling the app. This doesn't cancel goals or return deposits: they stay on Solana under the same rules. Records on Solana are public and can't be deleted by anyone.</p>
+
+        <h2 id="children">Children</h2>
+        <p>Lock-In involves deposits of crypto tokens and is not intended for anyone under 18.</p>
+
+        <h2 id="contact">Contact and changes</h2>
+        <p>Questions about your data: <a data-config="supportEmail" href="mailto:lockindapp@gmail.com">lockindapp@gmail.com</a>.</p>
+        <p>If this policy changes, the new version will be posted on this page with a new date.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="index.html" aria-label="Lock-In home">LOCK-IN<svg viewBox="270 230 484 600" aria-hidden="true"><path d="M396 470 V398 A116 116 0 0 1 628 398 V470" fill="none" stroke="#D4F66A" stroke-width="76"/><rect x="292" y="452" width="440" height="356" rx="76" fill="#D4F66A"/><circle cx="512" cy="606" r="46" fill="#111310"/><rect x="490" y="620" width="44" height="100" rx="22" fill="#111310"/></svg></a>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="how-it-works.html">How deposits work</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+      <p><span class="tag"><span class="dot" aria-hidden="true"></span>Runs on Solana mainnet. Deposits are in SKR.</span></p>
+      <p class="footer-note">Lock-In is an independent Android app that runs on Solana. It is not affiliated with or endorsed by Solana Mobile or the Solana Foundation.</p>
+    </div>
+  </footer>
+</body>
+</html>

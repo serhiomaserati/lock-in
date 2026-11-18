@@ -1,0 +1,1183 @@
+{
+  "address": "6za6iZpEP96dN76pGYj27JmqzMgkRQ3JT3SnvrsZbHbv",
+  "metadata": {
+    "name": "lockin",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Lock-In: a deposit locked on a personal goal"
+  },
+  "instructions": [
+    {
+      "name": "accept_admin",
+      "discriminator": [
+        112,
+        42,
+        45,
+        90,
+        116,
+        181,
+        13,
+        170
+      ],
+      "accounts": [
+        {
+          "name": "new_admin",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "check_in",
+      "discriminator": [
+        209,
+        253,
+        4,
+        217,
+        250,
+        241,
+        207,
+        50
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pledge",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "day",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "close_pledge",
+      "discriminator": [
+        84,
+        63,
+        119,
+        56,
+        166,
+        189,
+        166,
+        246
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "pledge"
+          ]
+        },
+        {
+          "name": "pledge",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "create_pledge",
+      "discriminator": [
+        86,
+        26,
+        21,
+        66,
+        130,
+        186,
+        102,
+        36
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pledge",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  101,
+                  100,
+                  103,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              },
+              {
+                "kind": "arg",
+                "path": "args.id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pledge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_token",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "CreatePledgeArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "init_config",
+      "discriminator": [
+        23,
+        235,
+        115,
+        232,
+        168,
+        96,
+        1,
+        231
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "forfeit_to"
+        },
+        {
+          "name": "program",
+          "address": "6za6iZpEP96dN76pGYj27JmqzMgkRQ3JT3SnvrsZbHbv"
+        },
+        {
+          "name": "program_data"
+        },
+        {
+          "name": "token_program"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "min_amount",
+          "type": "u64"
+        },
+        {
+          "name": "max_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "refund_in_safe_mode",
+      "discriminator": [
+        235,
+        237,
+        72,
+        224,
+        56,
+        116,
+        101,
+        114
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pledge",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "relations": [
+            "pledge"
+          ]
+        },
+        {
+          "name": "mint",
+          "relations": [
+            "pledge"
+          ]
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pledge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_token",
+          "writable": true
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "set_device_key",
+      "discriminator": [
+        151,
+        171,
+        217,
+        174,
+        60,
+        25,
+        94,
+        228
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "signer": true,
+          "relations": [
+            "pledge"
+          ]
+        },
+        {
+          "name": "pledge",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "device_key",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "set_paused_new",
+      "discriminator": [
+        211,
+        76,
+        235,
+        67,
+        28,
+        146,
+        143,
+        18
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "paused",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "set_safe_mode",
+      "discriminator": [
+        174,
+        243,
+        122,
+        183,
+        2,
+        140,
+        100,
+        142
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "on",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "settle",
+      "discriminator": [
+        175,
+        42,
+        185,
+        87,
+        144,
+        131,
+        102,
+        212
+      ],
+      "accounts": [
+        {
+          "name": "config",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "pledge",
+          "writable": true
+        },
+        {
+          "name": "owner",
+          "writable": true,
+          "relations": [
+            "pledge"
+          ]
+        },
+        {
+          "name": "mint",
+          "relations": [
+            "pledge"
+          ]
+        },
+        {
+          "name": "vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pledge"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_token",
+          "docs": [
+            "Needed when the goal is met."
+          ],
+          "writable": true,
+          "optional": true
+        },
+        {
+          "name": "forfeit_to",
+          "docs": [
+            "Needed when the goal is missed."
+          ],
+          "writable": true,
+          "optional": true
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "transfer_admin",
+      "discriminator": [
+        42,
+        242,
+        66,
+        106,
+        228,
+        10,
+        111,
+        156
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "new_admin",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "update_config",
+      "discriminator": [
+        29,
+        158,
+        252,
+        191,
+        10,
+        83,
+        219,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "admin",
+          "signer": true,
+          "relations": [
+            "config"
+          ]
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "forfeit_to"
+        },
+        {
+          "name": "token_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "min_amount",
+          "type": "u64"
+        },
+        {
+          "name": "max_amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Config",
+      "discriminator": [
+        155,
+        12,
+        170,
+        224,
+        30,
+        250,
+        204,
+        130
+      ]
+    },
+    {
+      "name": "Pledge",
+      "discriminator": [
+        161,
+        197,
+        121,
+        46,
+        99,
+        75,
+        169,
+        131
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotAdmin",
+      "msg": "Only the admin can do this"
+    },
+    {
+      "code": 6001,
+      "name": "NotPendingAdmin",
+      "msg": "Only the pending admin can accept"
+    },
+    {
+      "code": 6002,
+      "name": "NewPledgesPaused",
+      "msg": "New pledges are paused"
+    },
+    {
+      "code": 6003,
+      "name": "SafeModeOn",
+      "msg": "Not allowed while safe mode is on"
+    },
+    {
+      "code": 6004,
+      "name": "SafeModeOff",
+      "msg": "Only allowed in safe mode"
+    },
+    {
+      "code": 6005,
+      "name": "TooManySafePeriods",
+      "msg": "Too many safe-mode periods recorded"
+    },
+    {
+      "code": 6006,
+      "name": "AmountOutOfRange",
+      "msg": "Deposit amount is outside the allowed range"
+    },
+    {
+      "code": 6007,
+      "name": "InvalidLimits",
+      "msg": "Invalid amount limits"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidDays",
+      "msg": "Goal length must be 1..=60 days"
+    },
+    {
+      "code": 6009,
+      "name": "BoundsLength",
+      "msg": "Day bounds must have days + 2 entries"
+    },
+    {
+      "code": 6010,
+      "name": "BadStart",
+      "msg": "The first day must start within the next 48 hours"
+    },
+    {
+      "code": 6011,
+      "name": "BadDayLength",
+      "msg": "Each day must be 22 to 26 hours long"
+    },
+    {
+      "code": 6012,
+      "name": "TzTooLong",
+      "msg": "Timezone name too long"
+    },
+    {
+      "code": 6013,
+      "name": "BadStepsTarget",
+      "msg": "Steps goals need a daily target"
+    },
+    {
+      "code": 6014,
+      "name": "BadDeviceKey",
+      "msg": "Invalid device key"
+    },
+    {
+      "code": 6015,
+      "name": "NotActive",
+      "msg": "Pledge is not active"
+    },
+    {
+      "code": 6016,
+      "name": "StillActive",
+      "msg": "Pledge is still active"
+    },
+    {
+      "code": 6017,
+      "name": "NotCheckInSigner",
+      "msg": "Signer may not check in for this pledge"
+    },
+    {
+      "code": 6018,
+      "name": "DayOutOfRange",
+      "msg": "Day index outside the pledge window"
+    },
+    {
+      "code": 6019,
+      "name": "DayNotStarted",
+      "msg": "This day has not started yet"
+    },
+    {
+      "code": 6020,
+      "name": "CheckInClosed",
+      "msg": "Check-in window is closed"
+    },
+    {
+      "code": 6021,
+      "name": "TooEarlyToForfeit",
+      "msg": "Too early to settle a missed goal"
+    },
+    {
+      "code": 6022,
+      "name": "MissingPayoutAccount",
+      "msg": "Missing the account this payout goes to"
+    },
+    {
+      "code": 6023,
+      "name": "NotRefundSigner",
+      "msg": "Signer may not refund this pledge"
+    },
+    {
+      "code": 6024,
+      "name": "Overflow",
+      "msg": "Arithmetic overflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "Config",
+      "docs": [
+        "Global settings. They apply to pledges created after a change; every pledge keeps its own snapshot."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "pending_admin",
+            "docs": [
+              "Set by `transfer_admin`, takes over on `accept_admin`. Default = none pending."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "mint",
+            "docs": [
+              "Token accepted for new pledges."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "forfeit_to",
+            "docs": [
+              "Token account that receives forfeited deposits of new pledges."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "min_amount",
+            "type": "u64"
+          },
+          {
+            "name": "max_amount",
+            "type": "u64"
+          },
+          {
+            "name": "paused_new",
+            "type": "bool"
+          },
+          {
+            "name": "safe_mode",
+            "docs": [
+              "Emergency switch: forfeits are blocked, refunds to owners are allowed."
+            ],
+            "type": "bool"
+          },
+          {
+            "name": "safe_periods",
+            "docs": [
+              "Every safe-mode period so far (`end == 0` while it is on), oldest first."
+            ],
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "SafePeriod"
+                }
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CreatePledgeArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "docs": [
+              "Picked by the app, unique per owner (part of the pledge address)."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "days",
+            "type": "u8"
+          },
+          {
+            "name": "proof",
+            "type": {
+              "defined": {
+                "name": "ProofKind"
+              }
+            }
+          },
+          {
+            "name": "steps_per_day",
+            "type": "u32"
+          },
+          {
+            "name": "bounds",
+            "docs": [
+              "UTC start of every window day plus the end of the last one, in seconds (days + 2 values)."
+            ],
+            "type": {
+              "vec": "i64"
+            }
+          },
+          {
+            "name": "tz_name",
+            "type": "string"
+          },
+          {
+            "name": "device_key",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pledge",
+      "docs": [
+        "One goal with its deposit. Settled pledges are kept as history until the owner closes them."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "docs": [
+              "First field, so the app can find a wallet's pledges with a memcmp at offset 8."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "version",
+            "type": "u8"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "docs": [
+              "Amount that landed in the vault at creation."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "forfeit_to",
+            "type": "pubkey"
+          },
+          {
+            "name": "device_key",
+            "docs": [
+              "Key the app holds to check in without a wallet prompt. It can't move the deposit."
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "proof",
+            "type": {
+              "defined": {
+                "name": "ProofKind"
+              }
+            }
+          },
+          {
+            "name": "steps_per_day",
+            "type": "u32"
+          },
+          {
+            "name": "days",
+            "docs": [
+              "Required days (N). The window has N + 1 calendar days."
+            ],
+            "type": "u8"
+          },
+          {
+            "name": "checked",
+            "docs": [
+              "Bit i set = calendar day i of the window was hit."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "close_at",
+            "docs": [
+              "End of the last day + 24h, before safe-mode extensions. Check-ins stop and forfeits start here."
+            ],
+            "type": "i64"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "PledgeStatus"
+              }
+            }
+          },
+          {
+            "name": "settled_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "vault_bump",
+            "type": "u8"
+          },
+          {
+            "name": "bounds",
+            "docs": [
+              "UTC start of every window day plus the end of the last one (days + 2 values, seconds)."
+            ],
+            "type": {
+              "vec": "i64"
+            }
+          },
+          {
+            "name": "tz_name",
+            "docs": [
+              "Device timezone at creation, display only."
+            ],
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PledgeStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Returned"
+          },
+          {
+            "name": "Forfeited"
+          },
+          {
+            "name": "Refunded"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProofKind",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "SelfReport"
+          },
+          {
+            "name": "Steps"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SafePeriod",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "start",
+            "type": "i64"
+          },
+          {
+            "name": "end",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "constants": [
+    {
+      "name": "CONFIG_SEED",
+      "type": "bytes",
+      "value": "[99, 111, 110, 102, 105, 103]"
+    },
+    {
+      "name": "PLEDGE_SEED",
+      "type": "bytes",
+      "value": "[112, 108, 101, 100, 103, 101]"
+    },
+    {
+      "name": "VAULT_SEED",
+      "type": "bytes",
+      "value": "[118, 97, 117, 108, 116]"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How deposits work · Lock-In</title>
+  <meta name="description" content="The rules Lock-In follows: goal types, the calendar, late data, returning a deposit, goals that aren't met, safe mode, new phones and fees.">
+  <meta name="theme-color" content="#111310">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="canonical" href="https://lockinhq.app/how-it-works.html">
+  <meta property="og:url" content="https://lockinhq.app/how-it-works.html">
+  <meta property="og:image" content="https://lockinhq.app/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lock-In: Keep your word. The Android app showing a step goal.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="Lock-In home">LOCK-IN<svg viewBox="270 230 484 600" aria-hidden="true"><path d="M396 470 V398 A116 116 0 0 1 628 398 V470" fill="none" stroke="#D4F66A" stroke-width="76"/><rect x="292" y="452" width="440" height="356" rx="76" fill="#D4F66A"/><circle cx="512" cy="606" r="46" fill="#111310"/><rect x="490" y="620" width="44" height="100" rx="22" fill="#111310"/></svg></a>
+      <nav class="nav" aria-label="Main">
+        <a href="how-it-works.html" aria-current="page">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="support.html">Support</a>
+      </nav>
+      <details class="menu">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</summary>
+        <nav class="menu-panel" aria-label="Main, compact">
+          <a href="how-it-works.html" aria-current="page">How it works</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap narrow">
+      <div class="page-head">
+        <span class="eyebrow">The rules</span>
+        <h1>How deposits work</h1>
+        <p class="lead">What the app and the Lock-In program do with your goal and your deposit. The app shows the rules for your goal again before you lock anything.</p>
+      </div>
+
+      <div class="prose">
+        <div class="notice">
+          <p><strong>Lock-In is new.</strong> It runs on Solana mainnet with SKR. Each goal takes a deposit from 100 to 10,000 SKR, and the program is still upgradeable by the developer.</p>
+        </div>
+
+        <nav class="toc" aria-label="On this page">
+          <span class="eyebrow">On this page</span>
+          <ol>
+            <li><a href="#goals">Types of goals</a></li>
+            <li><a href="#calendar">The calendar</a></li>
+            <li><a href="#late-data">Late data</a></li>
+            <li><a href="#recorded">On your phone and on Solana</a></li>
+            <li><a href="#return">Returning a deposit</a></li>
+            <li><a href="#not-met">When a goal isn't met</a></li>
+            <li><a href="#safe-mode">Safe mode</a></li>
+            <li><a href="#new-phone">New phone or reinstall</a></li>
+            <li><a href="#fees">Fees</a></li>
+            <li><a href="#status">Current status</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="goals">Types of goals</h2>
+        <p><strong>Daily steps.</strong> Set a daily step target. Lock-In reads your steps from Android Health Connect on your phone. Steps entered by hand don't count. If your phone and a watch record the same walk, it counts once.</p>
+        <p><strong>Personal check-in.</strong> Any other daily habit. You tap Check in once you've done it. It works on your honor, and a check-in can only ever return your own deposit.</p>
+        <p>Either way, the Solana program never sees your steps or your habit. It records the days your phone reports as complete.</p>
+
+        <h2 id="calendar">The calendar</h2>
+        <ul>
+          <li>A goal starts at the next midnight in your phone's time zone, so every day is a full day. If midnight is less than 10 minutes away, it starts at the midnight after that.</li>
+          <li>The time zone is saved when you create the goal and doesn't change if you travel. The app shows it on the goal.</li>
+          <li>You need N completed days within N + 1 calendar days. A 7-day goal has an 8-day window: one spare day is included, and it can be any day of the window.</li>
+          <li>Daylight-saving changes are handled: a day always runs from midnight to midnight, even when it has 23 or 25 hours.</li>
+        </ul>
+        <figure class="shot">
+          <img src="assets/img/frag-day-track.webp" width="720" height="233" loading="lazy"
+            alt="The goal's days in the app: 3 of 7 days complete, day 4 today, 1 spare day left.">
+          <figcaption>A 7-day goal in the app: eight calendar days, one of them spare. Sample data.</figcaption>
+        </figure>
+
+        <h2 id="late-data">Late data</h2>
+        <p>Steps can reach Health Connect late, for example from a watch that syncs later. For 24 hours after the goal's last day ends, steps from the goal's days still count, and days completed on your phone can still be recorded on Solana. After that window no more days can be recorded. A completed goal's deposit can still be returned at any time.</p>
+
+        <h2 id="recorded">On your phone and on Solana</h2>
+        <p>Completing a day happens in two steps:</p>
+        <ol>
+          <li><strong>On your phone.</strong> The steps target is reached, or you check in. The app shows "Saving your check-in…".</li>
+          <li><strong>On Solana.</strong> Your phone records the day with a key the app created for it, so there is no wallet pop-up every day. Once the transaction is confirmed, the app shows "Day recorded on Solana".</li>
+        </ol>
+        <p>Without a connection the day stays saved on your phone. It is sent the next time you open Lock-In with a connection, as long as the late-data window hasn't closed. The app doesn't send it in the background.</p>
+
+        <h2 id="return">Returning a deposit</h2>
+        <p>When you've completed the required days, the goal is complete and the full deposit is available to return. Tap Return in the goal or in the Wallet tab. The program sends the deposit back to your wallet, and the app shows it as returned once the transfer is confirmed on Solana. There is no deadline for returning a completed goal's deposit.</p>
+        <p>The program pays out by the goal's rules no matter who asks it to settle the goal, so a completed goal's deposit can only go back to the wallet that locked it.</p>
+
+        <h2 id="not-met">When a goal isn't met</h2>
+        <div class="table-scroll">
+          <table>
+            <tr><th>What the app shows</th><th>What it means</th></tr>
+            <tr><td data-label="The app shows">Goal not met · Transfer pending</td><td data-label="What it means">The goal can't be completed any more. The deposit is still held by the program and hasn't moved yet.</td></tr>
+            <tr><td data-label="The app shows">Deposit forfeited</td><td data-label="What it means">The deposit was transferred to the recipient fixed when the goal was created. The app only shows this after the transfer is confirmed on Solana.</td></tr>
+          </table>
+        </div>
+        <p>A goal that wasn't met can only be settled after the late-data window has closed. The transfer happens when a settlement transaction is sent and confirmed, not at an exact moment. The recipient is the Lock-In treasury, a wallet of the operator, and the app shows it before you lock a deposit. Forfeited deposits are never paid to other users.</p>
+
+        <h2 id="safe-mode">Safe mode</h2>
+        <p>Safe mode is an emergency switch for problems on Lock-In's side. While it is on, no deposit can be forfeited, and you can take an active goal's deposit back to your wallet. Time spent in safe mode doesn't count against your late-data window.</p>
+
+        <h2 id="new-phone">New phone or reinstall</h2>
+        <p>Your goals live on Solana, so they aren't lost with the phone. Connect the same wallet and the app finds your goals. For each active goal, tap Link this phone and approve the link in your wallet. From then on that phone records your days. Until you link it, days completed on the new phone can't be recorded.</p>
+        <p>Goal names are stored only on the phone where you created them, so a restored goal gets a generic name.</p>
+
+        <h2 id="fees">Fees</h2>
+        <p>Lock-In charges no fee of its own. Creating a goal costs a little SOL, separately from the deposit. Approximate figures for a 7-day goal; your wallet shows the exact amount before you sign:</p>
+        <ul>
+          <li><strong>Storage (rent):</strong> about 0.0021 SOL for the goal record and about 0.0015 SOL for the account that holds the deposit. Solana keeps this while the accounts exist. It isn't a fee.</li>
+          <li><strong>Check-in balance:</strong> when this phone's check-in key runs low, about 0.003 SOL moves to it from your wallet. It pays the small fees for recording your days and stays on that key for later goals.</li>
+          <li><strong>Transaction fees:</strong> about 0.000005 SOL per signature.</li>
+        </ul>
+        <p>When a goal is settled, whether the deposit is returned or forfeited, the deposit account is closed and its rent goes back to your wallet. The goal record stays as history; its rent only comes back if the record is closed, which the app doesn't offer yet. Returning a deposit returns the tokens you locked, not the SOL spent on fees.</p>
+
+        <h2 id="status">Current status</h2>
+        <ul>
+          <li>Lock-In runs on Solana mainnet and is available on the <a href="solanadappstore://details?id=app.lockin.mobile">Solana dApp Store</a>. Deposits are in SKR, from 100 to 10,000 SKR per goal. The app shows the current range before you lock a deposit.</li>
+          <li>The program is still upgradeable by the developer and hasn't had an independent audit.</li>
+          <li>Only lock an amount you are prepared to lose if you don't complete your goal.</li>
+          <li>Transactions on Solana are public. See the <a href="privacy.html">privacy policy</a> for what that means for your goals.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <a class="brand" href="index.html" aria-label="Lock-In home">LOCK-IN<svg viewBox="270 230 484 600" aria-hidden="true"><path d="M396 470 V398 A116 116 0 0 1 628 398 V470" fill="none" stroke="#D4F66A" stroke-width="76"/><rect x="292" y="452" width="440" height="356" rx="76" fill="#D4F66A"/><circle cx="512" cy="606" r="46" fill="#111310"/><rect x="490" y="620" width="44" height="100" rx="22" fill="#111310"/></svg></a>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="how-it-works.html">How deposits work</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+      <p><span class="tag"><span class="dot" aria-hidden="true"></span>Runs on Solana mainnet. Deposits are in SKR.</span></p>
+      <p class="footer-note">Lock-In is an independent Android app that runs on Solana. It is not affiliated with or endorsed by Solana Mobile or the Solana Foundation.</p>
+    </div>
+  </footer>
+</body>
+</html>
